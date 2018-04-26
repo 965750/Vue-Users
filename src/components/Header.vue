@@ -2,69 +2,81 @@
   <div class="headCont">
       <h2>Vue App</h2>
       <ul>
-          <li class="active">List</li>
-          <li>Add</li>
-          <li>About</li>
+          <router-link to="/vue-users-list/" exact><li class="active">List</li></router-link>
+          <router-link to="/vue-users-list/about" exact><li>About</li></router-link>
       </ul>
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'app',
-  data () {
-    return {
-      
-    }
+  name: "app",
+  data() {
+    return {};
   },
-  methods: {
-
-  },
-  created() {
-    
-  }
-}
+  methods: {},
+  created() {}
+};
 </script>
 
 <style lang="scss" scoped>
+.headCont {
+  background: #41b883;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  h2 {
+    padding: 0px;
+    margin: 0px;
+    color: #34495e;
+    font-size: 30px;
+    padding-left: 20px;
+    line-height: 50px;
+  }
+  ul {
+    display: flex;
+    padding: 0px;
+    margin: 0px;
+    width: 200px;
+    list-style-type: none;
+    padding-right: 20px;
+    a {
+      width: 50%;
+      height: 35px;
+      text-transform: uppercase;
+      line-height: 40px;
+      text-align: center;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      transition: all 0.1s;
+      text-decoration: none;
+      &:hover {
+        cursor: pointer;
+      }
+      &:hover li {
+        color: #000;
+      }
+      li {
+        color: #34495e;
+        text-decoration: none;
+      }
+    }
+    .router-link-active {
+      background: #39da91;
+    }
+  }
+}
+@media screen and(max-width: 500px){
     .headCont{
-        background: #41b883;
-        width: 100%;
-        height: 50px;
-        display: flex;
-        justify-content: space-between;
-        h2{
-            padding: 0px;
-            margin: 0px;
-            color: #34495e;
-            font-size: 30px;
-            padding-left: 20px;
-            line-height: 50px;
-        }
         ul{
-            display: flex;
-            padding: 0px;
-            margin: 0px;
-            width: 200px;
-            list-style-type: none;
-            padding-right: 20px;
-            li{
-                width: 33.33%;
-                height: 35px;
-                text-transform: uppercase;
-                color: #34495e;
-                line-height: 40px;
-                text-align: center;
-                border-bottom-left-radius: 10px;
-                border-bottom-right-radius: 10px;
-                &:hover{
-                    color: #000;
-                }
-            }
-            .active{
-                background: #39da91;
-            }
+            width: 150px;
+        }
+        h2{
+            font-size: 20px;
+            opacity: .15;
         }
     }
+}
 </style>
