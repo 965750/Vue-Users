@@ -1,31 +1,46 @@
 <template>
-<div>
-<div class="optCont">
-    <input type="text" class="searchInp" v-model="search" placeholder="search name..." />
-    <h2>Users List</h2>
-    <transition name="bounce">
-        <span v-if="added" transition="expand" class="userAdd">+ Request sent</span>
-    </transition>
-</div>
-<ul class="listCont">
-    <li v-for="(user, index) in filteredUsers" :key="user.login">
-        <div class="avatarCont"><img v-bind:src="user.avatar_url" /></div>
-        <router-link v-bind:to="'/vue-users-list/user/' + user.login"><h3>{{ user.login }}</h3></router-link>
-        <h5>{{ user.score }}</h5>
-        <button v-on:click="addFriend(index)" class="addFriendBtn">Add Friend</button>
-    </li>
-</ul>
-</div>
+  <div>
+    <div class="innerCont">
+      <div class="ad">
+        
+      </div>
+      <div class="main">
+        <div class="optCont">
+          <input type="text" class="searchInp" v-model="search" placeholder="search name..." />
+          <h2>Users List</h2>
+          <transition name="bounce">
+          <span v-if="added" transition="expand" class="userAdd">+ Request sent</span>
+          </transition>
+        </div>
+        <ul class="listCont">
+          <li v-for="(user, index) in filteredUsers" :key="user.login">
+            <router-link :to="'/user/' + user.login"><div class="avatarCont"><img v-bind:src="user.avatar_url" /></div></router-link>
+            <router-link :to="'/user/' + user.login"><h3>{{ user.login }}</h3></router-link>
+            <h5>{{ user.score }}</h5>
+            <button v-on:click="addFriend(index)" class="addFriendBtn">Add Friend</button>
+          </li>
+        </ul>
+      </div>
+      <div class="liveChatCont">
+        <AsideChat class="liveChat"/>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
+import AsideChat from "./AsideChat";
+
 export default {
+  components: {
+    AsideChat
+  },
   props: {
     users: {
       type: Array
     }
   },
-  name: "app",
+  name: "users",
   data() {
     return {
       search: "",
@@ -51,13 +66,27 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.innerCont {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  .ad {
+    width: 300px;
+  }
+  .main {
+    width: 600px;
+  }
+  .liveChatCont {
+    width: 300px;
+  }
+}
 .optCont {
   max-width: 600px;
   height: 40px;
   background: #fff;
   margin: 0px auto 10px;
   border-radius: 10px;
-  box-shadow: 0px 0px 1px rgb(121, 121, 121);
+  box-shadow: 0px 0px 5px rgb(121, 121, 121);
   display: flex;
   h2 {
     margin: 0px;
@@ -119,8 +148,8 @@ export default {
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
-    a{
-        text-decoration: none;
+    a {
+      text-decoration: none;
     }
     .avatarCont {
       border-radius: 50%;
@@ -128,6 +157,7 @@ export default {
       height: 120px;
       margin: 25px auto;
       overflow: hidden;
+      cursor: pointer;
       img {
         height: 120px;
       }
@@ -169,39 +199,44 @@ export default {
     }
   }
 }
-@media screen and(max-width: 650px){
-  .optCont{
+@media screen and(max-width: 1000px) {
+  .liveChat {
+    display: none;
+  }
+}
+@media screen and(max-width: 650px) {
+  .optCont {
     max-width: 400px;
-    h2{
+    h2 {
       width: 30%;
-      font-size: 20px;
+      font-size: 16px;
     }
-    .searchInp{
+    .searchInp {
       width: 34%;
     }
-    .userAdd{
+    .userAdd {
       width: 35%;
     }
   }
-  .listCont{
+  .listCont {
     max-width: 400px;
   }
 }
-@media screen and(max-width: 450px){
-  .optCont{
+@media screen and(max-width: 550px) {
+  .optCont {
     max-width: 310px;
-    h2{
+    h2 {
       width: 0%;
       display: none;
     }
-    .searchInp{
+    .searchInp {
       width: 49%;
     }
-    .userAdd{
+    .userAdd {
       width: 50%;
     }
   }
-  .listCont{
+  .listCont {
     max-width: 200px;
   }
 }

@@ -10,6 +10,7 @@
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 import Users from "./components/Users.vue";
+import axios from 'axios';
 
 export default {
   components: {
@@ -20,18 +21,17 @@ export default {
   name: "app",
   data() {
     return {
-      users: []
-    };
+      users: [],
+      title: 'titulee'
+    }
   },
-  methods: {},
   created() {
-    this.$http
-      .get(
-        "https://api.github.com/search/users?q=tom+repos:%3E22+followers:%3E100"
-      )
-      .then(function(data) {
-        this.users = data.body.items;
-      });
+    axios.get("https://api.github.com/search/users?q=tom+repos:%3E22+followers:%3E100")
+      .then(resp => {
+        this.users = resp.data.items
+      }).catch(err => {
+        console.log(err)
+      })
   }
 };
 </script>
@@ -44,11 +44,7 @@ body {
   background: #f5f5f5;
   color: #34495e;
 }
-.head {
-}
 .content {
   min-height: calc(100vh - 200px);
-}
-.foot {
 }
 </style>

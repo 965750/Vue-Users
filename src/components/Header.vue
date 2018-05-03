@@ -2,15 +2,16 @@
   <div class="headCont">
       <h2>Vue App</h2>
       <ul>
-          <router-link to="/vue-users-list/" exact><li class="active">List</li></router-link>
-          <router-link to="/vue-users-list/about" exact><li>About</li></router-link>
+          <router-link :to="{ name: 'Users'}" exact><li class="active">Home</li></router-link>
+          <router-link :to="{ name: 'Livechat', params: { wide: true }}" exact><li>Livechat</li></router-link>
+          <router-link :to="{ name: 'About'}" exact><li>About</li></router-link>
       </ul>
   </div>
 </template>
 
 <script>
 export default {
-  name: "app",
+  name: "AppHeader",
   data() {
     return {};
   },
@@ -39,7 +40,7 @@ export default {
     display: flex;
     padding: 0px;
     margin: 0px;
-    width: 200px;
+    width: 300px;
     list-style-type: none;
     padding-right: 20px;
     a {

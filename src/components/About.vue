@@ -2,7 +2,7 @@
 <div>
     <div class="infoCont">
         <h2>App Description</h2>
-        <p>Simple aplication created in Vue.js. List of Github users, where You can check more details about every single person by simple click.</p>
+        <p>Simple aplication created in Vue.js. List of Github users with Live-Chat, where You can check more details about every single person by simple click. Live-chat connected to datebase.</p>
         <h4>List of technologies Used in this project</h4>
         <ul>
             <li v-for="tech in technologies" :key="tech">{{ tech }}</li>
@@ -18,10 +18,10 @@ export default {
       type: Array
     }
   },
-  name: "app",
+  name: "about",
   data() {
     return {
-      technologies: ["API", "Sass", "JS", "HTML5", "RWD", "Git", "Vue.js"]
+      technologies: ["API", "Sass", "JS", "HTML5", "RWD", "Git", "Vue.js", "FireBase"]
     };
   }
 };

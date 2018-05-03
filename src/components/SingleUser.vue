@@ -1,6 +1,10 @@
 <template>
     <div id="singleUser">
         <article class="userCont">
+            <div class="backCont" @click="goBack">
+              <i class="material-icons arr">chevron_left</i>
+              <span class="back">back</span>
+            </div>
             <h2>{{ user.login }}</h2>
             <div class="mainInfoCont">
                 <div class="avatarCont"><img v-bind:src="user.avatar_url" /></div>
@@ -35,7 +39,10 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
+  name: "singleuser",
   data() {
     return {
       id: this.$route.params.id,
@@ -53,13 +60,13 @@ export default {
       } else if (this.newTitle.length <= 2 || this.newBody.length <= 2) {
         this.error = "No less than 3 and characters!";
       } else {
-        this.$http
+        axios
           .post("https://jsonplaceholder.typicode.com/posts", {
             title: this.newTitle,
             body: this.newBody,
             userId: 1
           })
-          .then(function(data) {
+          .then(data => {
             console.log(data);
             this.posts.push({
               title: this.newTitle,
@@ -69,20 +76,19 @@ export default {
           });
         this.error = "";
       }
+    },
+    goBack() {
+      this.$router.go(-1);
     }
   },
   created() {
-    this.$http
-      .get("https://api.github.com/users/" + this.id)
-      .then(function(data) {
-        this.user = data.body;
-      });
+    axios.get("https://api.github.com/users/" + this.id).then(data => {
+      this.user = data.data;
+    });
 
-    this.$http
-      .get("https://jsonplaceholder.typicode.com/posts")
-      .then(function(data) {
-        this.posts = data.body.splice(Math.floor(Math.random() * 91), 3);
-      });
+    axios.get("https://jsonplaceholder.typicode.com/posts").then(data => {
+      this.posts = data.data.splice(Math.floor(Math.random() * 91), 3);
+    });
   }
 };
 </script>
@@ -97,6 +103,38 @@ export default {
   box-sizing: border-box;
   box-shadow: 0px 0px 5px rgb(121, 121, 121);
   border-radius: 10px;
+  position: relative;
+  .backCont {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 14px;
+    color: #aaa;
+    cursor: pointer;
+    display: block;
+    border: 1px solid #aaa;
+    width: 60px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    border-radius: 7px;
+    display: flex;
+    transition: all .1s;
+    &:hover{
+      background: #34495e;
+      color: #39da91;
+    }
+    .arr {
+      font-size: 20px;
+      line-height: 20px;
+      width: 20%;
+    }
+    .back{
+      line-height: 20px;
+      display: block;
+      width: 80%;
+    }
+  }
   .addCont {
     margin-top: 10px;
     height: 120px;

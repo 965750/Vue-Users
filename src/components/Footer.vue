@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: "app",
+  name: "AppFooter",
   data() {
     return {};
   },
