@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="innerCont">
-      <div class="ad">
+      <div class="liveChatCont">
         
       </div>
       <div class="main">
@@ -66,13 +66,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .innerCont {
   display: flex;
-  flex-grow: 1;
   justify-content: center;
-  .ad {
-    width: 300px;
-  }
+  flex-grow: 1;
   .main {
     width: 600px;
   }
