@@ -2,7 +2,7 @@
   <div>
     <div class="chatCont" :class="{wide: wideLink}">
         <div v-if="logged || minName">
-            <ul class="messages" v-chat-scroll>
+            <ul class="messages" v-chat-scroll v-on:scroll="scroll">
                 <li v-for="message in messages" :key="message.id">
                     <span class="name">{{ message.name }}</span>
                     <span class="message">{{ message.content }}</span>
@@ -51,6 +51,9 @@ export default {
       } else {
         return;
       }
+    },
+    scroll(){
+      console.log("testoo");
     }
   },
   created() {
@@ -194,5 +197,13 @@ p {
 }
 .wide .addCont {
   height: 60px;
+}
+@media (max-width: 630px){
+  .wide{
+    width: 96%;
+  }
+  .wide .nameInp{
+    width: 40%;
+  }
 }
 </style>

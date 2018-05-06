@@ -19,7 +19,12 @@ Vue.filter('limit', function(value){
 
 const router = new VueRouter({
   routes: Routes,
-  mode: 'hash'
+  mode: 'history'
+});
+
+router.beforeEach(function (to, from, next) { 
+  window.scrollTo(0, 0);
+  next();
 });
 
 new Vue({

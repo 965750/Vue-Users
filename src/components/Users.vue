@@ -2,9 +2,9 @@
   <div>
     <div class="innerCont">
       <div class="liveChatCont">
-        
+
       </div>
-      <div class="main">
+      <div class="main" ref="usersList">
         <div class="optCont">
           <input type="text" class="searchInp" v-model="search" placeholder="search name..." />
           <h2>Users List</h2>
@@ -44,7 +44,8 @@ export default {
   data() {
     return {
       search: "",
-      added: false
+      added: false,
+      searchMax: 6
     };
   },
   methods: {
@@ -52,16 +53,26 @@ export default {
       this.added = true;
       this.filteredUsers.splice(index, 1);
       setTimeout(() => (this.added = false), 1200);
+    },
+    moreUsers() {
+      if(window.scrollY > this.$refs.usersList.clientHeight - 351){
+        this.searchMax = this.searchMax + 6;
+        console.log("DONE");
+        console.log(this.searchMax)
+      }
+      console.log(window.scrollY, this.$refs.usersList.clientHeight)
     }
   },
   computed: {
     filteredUsers: function() {
       return this.users.filter(user => {
-        return user.login.match(this.search);
-      });
+        return user.login.match(this.search)
+      }).splice(1, this.searchMax);
     }
   },
-  created() {}
+  created() {
+    window.addEventListener('scroll', this.moreUsers);
+  }
 };
 </script>
 
@@ -197,9 +208,22 @@ export default {
     }
   }
 }
+@media screen and(max-width: 1200px) {
+  .listCont{
+    max-width: 400px;
+  }
+}
 @media screen and(max-width: 1000px) {
   .liveChat {
     display: none;
+  }
+}
+@media screen and(max-width: 800px) {
+  .listCont{
+    max-width: 200px;
+  }
+  .userAdd{
+    font-size: 12px;
   }
 }
 @media screen and(max-width: 650px) {
@@ -217,7 +241,7 @@ export default {
     }
   }
   .listCont {
-    max-width: 400px;
+    max-width: 200px;
   }
 }
 @media screen and(max-width: 550px) {

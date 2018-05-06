@@ -21,8 +21,7 @@ export default {
   name: "app",
   data() {
     return {
-      users: [],
-      title: 'titulee'
+      users: []
     }
   },
   created() {

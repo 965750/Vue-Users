@@ -19,6 +19,7 @@
                 <span>WebSite: </span><a v-bind:href="user.blog">{{ user.blog }}</a>
             </div>
             <div class="postCont">
+              <div v-bind:class="{lazyload: loading}"></div>
                 <ul>
                     <li v-for="post in posts" :key="post.title">
                         <div class="postTitle">{{ post.title }}</div>
@@ -50,7 +51,8 @@ export default {
       posts: [],
       newTitle: "",
       newBody: "",
-      error: ""
+      error: "",
+      loading: true
     };
   },
   methods: {
@@ -87,7 +89,8 @@ export default {
     });
 
     axios.get("https://jsonplaceholder.typicode.com/posts").then(data => {
-      this.posts = data.data.splice(Math.floor(Math.random() * 91), 3);
+        this.posts = data.data.splice(Math.floor(Math.random() * 91), 3);
+        this.loading = false;
     });
   }
 };
@@ -294,6 +297,28 @@ export default {
         font-weight: 700;
       }
     }
+  }
+}
+.lazyload{
+  height: 30px;
+  width: 30px;
+  box-sizing: border-box;
+  border: 4px solid #34495e;
+  border-top: 4px solid #39da91;
+  border-radius: 50%;
+  animation: load infinite 1.4s ease;
+  transition: .2s all;
+  position: absolute;
+  right: 3%;
+  top: 1%;
+  transform: translate(-50px, -50%);
+}
+@keyframes load{
+  0%{
+    transform: rotate(0deg)
+  }
+  100%{
+    transform: rotate(360deg)
   }
 }
 @media screen and(max-width: 500px) {

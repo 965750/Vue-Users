@@ -69,15 +69,30 @@ export default {
     }
   }
 }
-@media screen and(max-width: 500px){
-    .headCont{
-        ul{
-            width: 150px;
-        }
-        h2{
-            font-size: 20px;
-            opacity: .15;
-        }
+@media screen and(max-width: 500px) {
+  .headCont {
+    height: 40px;
+    ul {
+      width: 250px;
+      padding-right: 0px;
     }
+    h2 {
+      font-size: 20px;
+      opacity: 0.15;
+      line-height: 40px;
+    }
+  }
+}
+@media screen and(max-width: 400px) {
+  .headCont {
+    h2 {
+      opacity: 0;
+      width: 0%;
+      padding-left: 0px;
+    }
+    ul {
+      width: 100%;
+    }
+  }
 }
 </style>
