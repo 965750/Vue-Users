@@ -44,8 +44,7 @@ export default {
   data() {
     return {
       search: "",
-      added: false,
-      searchMax: 6
+      added: false
     };
   },
   methods: {
@@ -54,20 +53,21 @@ export default {
       this.filteredUsers.splice(index, 1);
       setTimeout(() => (this.added = false), 1200);
     },
-    moreUsers() {
-      if(window.scrollY > this.$refs.usersList.clientHeight - 351){
-        this.searchMax = this.searchMax + 6;
-        console.log("DONE");
-        console.log(this.searchMax)
-      }
-      console.log(window.scrollY, this.$refs.usersList.clientHeight)
-    }
+    // LIMIT USERS LIST
+    // moreUsers() {
+    //   if(window.scrollY > this.$refs.usersList.clientHeight - 351){
+    //     this.searchMax = this.searchMax + 6;
+    //     console.log("DONE");
+    //     console.log(this.searchMax)
+    //   }
+    //   console.log(window.scrollY, this.$refs.usersList.clientHeight)
+    // }
   },
   computed: {
     filteredUsers: function() {
       return this.users.filter(user => {
         return user.login.match(this.search)
-      }).splice(1, this.searchMax);
+      })
     }
   },
   created() {
