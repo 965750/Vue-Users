@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="chatCont" :class="{wide: wideLink}">
+    <div class="chatCont" :class="{wide: wideLink, darkTheme: dark}">
         <div v-if="logged || minName">
             <ul class="messages" v-chat-scroll v-on:scroll="scroll">
                 <li v-for="message in messages" :key="message.id">
@@ -10,7 +10,7 @@
                 </li>
             </ul>
             <div class="addCont">
-                <NewMessage :name="name"/>
+                <NewMessage :dark="dark" :name="name"/>
             </div>
         </div>
         <div v-if="!logged">
@@ -34,7 +34,7 @@ export default {
   components: {
     NewMessage
   },
-  props: ["minName"],
+  props: ["minName","dark"],
   data() {
     return {
       messages: [],
@@ -197,6 +197,16 @@ p {
 }
 .wide .addCont {
   height: 60px;
+}
+.darkTheme{
+  background: #34495e;
+}
+.darkTheme .addCont{
+  background: #465d74;
+}
+.darkTheme .nameInp{
+  background: #293847;
+  color: #f5f5f5;
 }
 @media (max-width: 630px){
   .wide{

@@ -21,7 +21,6 @@ export default {
   background: #34495e;
   width: 100%;
   height: 50px;
-  margin-top: 50px;
   display: flex;
   justify-content: space-between;
   h2 {

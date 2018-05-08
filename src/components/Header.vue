@@ -3,7 +3,7 @@
       <h2>Vue App</h2>
       <ul>
           <router-link :to="{ name: 'Users'}" exact><li class="active">Home</li></router-link>
-          <router-link :to="{ name: 'Livechat', params: { wide: true }}" exact><li>Livechat</li></router-link>
+          <router-link :to="{ name: 'Livechat'}" exact><li>Livechat</li></router-link>
           <router-link :to="{ name: 'About'}" exact><li>About</li></router-link>
       </ul>
   </div>
@@ -27,7 +27,6 @@ export default {
   height: 50px;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 50px;
   h2 {
     padding: 0px;
     margin: 0px;

@@ -1,6 +1,6 @@
 <template>
 <div>
-    <div class="infoCont">
+    <div class="infoCont" v-bind:class="{darkTheme: dark}">
         <h2>App Description</h2>
         <p>Simple aplication created in Vue.js. List of Github users with Live-Chat, where You can check more details about every single person by simple click. Live-chat connected to datebase.</p>
         <h4>List of technologies Used in this project</h4>
@@ -14,11 +14,11 @@
 <script>
 export default {
   props: {
-    users: {
-      type: Array
+    dark: {
+      type: Boolean
     }
   },
-  name: "about",
+  name: "About",
   data() {
     return {
       technologies: ["API", "Sass", "JS", "HTML5", "RWD", "Git", "Vue.js", "FireBase"]
@@ -36,13 +36,13 @@ export default {
   box-shadow: 0px 0px 5px rgb(121, 121, 121);
   padding: 10px;
   box-sizing: border-box;
+  border-radius: 10px;
   h2 {
     margin: 0px;
     text-align: center;
     color: #41b883;
   }
   p {
-    color: #34495e;
     font-size: 15px;
   }
   h4 {
@@ -61,10 +61,12 @@ export default {
     li {
       width: 18%;
       margin-bottom: 15px;
-      color: #34495e;
       font-size: 17px;
     }
   }
+}
+.darkTheme{
+  background: #34495e;
 }
 @media screen and(max-width: 700px) {
   .infoCont {

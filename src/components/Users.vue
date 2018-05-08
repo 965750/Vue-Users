@@ -5,14 +5,14 @@
 
       </div>
       <div class="main" ref="usersList">
-        <div class="optCont">
+        <div class="optCont" v-bind:class="{darkTheme: dark}">
           <input type="text" class="searchInp" v-model="search" placeholder="search name..." />
           <h2>Users List</h2>
           <transition name="bounce">
           <span v-if="added" transition="expand" class="userAdd">+ Request sent</span>
           </transition>
         </div>
-        <ul class="listCont">
+        <ul class="listCont" v-bind:class="{darkTheme: dark}">
           <li v-for="(user, index) in filteredUsers" :key="user.login">
             <router-link :to="'/user/' + user.login"><div class="avatarCont"><img v-bind:src="user.avatar_url" /></div></router-link>
             <router-link :to="'/user/' + user.login"><h3>{{ user.login }}</h3></router-link>
@@ -22,7 +22,7 @@
         </ul>
       </div>
       <div class="liveChatCont">
-        <AsideChat class="liveChat"/>
+        <AsideChat v-bind:dark="dark" class="liveChat"/>
       </div>
     </div>
   </div>
@@ -38,6 +38,9 @@ export default {
   props: {
     users: {
       type: Array
+    },
+    dark: {
+      type: Boolean
     }
   },
   name: "users",
@@ -121,7 +124,6 @@ export default {
     border-bottom-left-radius: 7px;
     padding: 5px;
     border: 1px solid #34495e;
-    color: #34495e;
     font-size: 13px;
     background: #fff;
     &:focus {
@@ -206,6 +208,23 @@ export default {
         cursor: pointer;
       }
     }
+  }
+}
+.darkTheme{
+  background: #34495e;
+  color: #f5f5f5;
+  .searchInp{
+    background: #293847;
+    color: #f5f5f5;
+  }
+  li{
+    border: 1px solid #486079;
+    h3{
+      color: #fff;
+    }
+  }
+  h2{
+    color: #fff;
   }
 }
 @media screen and(max-width: 1200px) {

@@ -1,6 +1,6 @@
 <template>
     <div id="singleUser">
-        <article class="userCont">
+        <article v-bind:class="{darkTheme: dark}" class="userCont">
             <div class="backCont" @click="goBack">
               <i class="material-icons arr">chevron_left</i>
               <span class="back">back</span>
@@ -43,6 +43,11 @@
 import axios from "axios";
 
 export default {
+  props: {
+    dark: {
+      type: Boolean
+    }
+  },
   name: "singleuser",
   data() {
     return {
@@ -246,7 +251,6 @@ export default {
     justify-content: space-around;
     flex-wrap: wrap;
     span {
-      color: #34495e;
       width: 35%;
       line-height: 30px;
       height: 30px;
@@ -290,7 +294,6 @@ export default {
       width: 100%;
       height: 40px;
       box-sizing: border-box;
-      color: #34495e;
       line-height: 40px;
       .getInfo {
         font-size: 18px;
@@ -312,6 +315,33 @@ export default {
   right: 3%;
   top: 1%;
   transform: translate(-50px, -50%);
+}
+.darkTheme{
+  background: #34495e;
+  .linkCont{
+    a{
+      color: #f6f6f6;
+    }
+  }
+  .postCont{
+    ul{
+      li{
+        background: #465d74;
+      }
+    }
+  }
+  .addCont{
+    .inpCont{
+      .addInp{
+        color: #f5f5f5;
+        background: #293847;
+      }
+      textarea{
+        color: #f5f5f5;
+        background: #293847;
+      }
+    }
+  }
 }
 @keyframes load{
   0%{

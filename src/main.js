@@ -17,6 +17,8 @@ Vue.filter('limit', function(value){
   }
 });
 
+export const bus = new Vue();
+
 const router = new VueRouter({
   routes: Routes,
   mode: 'history'

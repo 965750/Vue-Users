@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-bind:class="{darkTheme: dark}">
       <span class="nickname">{{ name }}</span><span class="feedback">{{ feedback }}</span>
       <form>
           <textarea ref="commentInp" @keyup.enter="addMessage" class="addInp" v-model="newMessage" />
@@ -16,7 +16,7 @@ import db from "../firebase/init";
 
 export default {
   name: "NewMessage",
-  props: ["name"],
+  props: ["name", "dark"],
   data() {
     return {
       newMessage: null,
@@ -64,7 +64,7 @@ export default {
   width: 100%;
   height: 55px;
   border: 1px solid #34495e;
-  margin: 0px auto 5px;
+  margin: 0px 4px 5px;
   border-radius: 7px;
   padding: 5px;
   display: block;
@@ -134,5 +134,12 @@ export default {
 }
 .wide .maximize{
     display: none;
+}
+.darkTheme .addInp{
+    background: #293847;
+    color: #f5f5f5;
+}
+.darkTheme{
+    background:#465d74;
 }
 </style>
