@@ -47,7 +47,8 @@ export default {
   data() {
     return {
       search: "",
-      added: false
+      added: false,
+      searchMax: 12
     };
   },
   methods: {
@@ -57,30 +58,31 @@ export default {
       setTimeout(() => (this.added = false), 1200);
     },
     // LIMIT USERS LIST
-    // moreUsers() {
-    //   if(window.scrollY > this.$refs.usersList.clientHeight - 351){
-    //     this.searchMax = this.searchMax + 6;
-    //     console.log("DONE");
-    //     console.log(this.searchMax)
-    //   }
-    //   console.log(window.scrollY, this.$refs.usersList.clientHeight)
-    // }
+    moreUsers() {
+      if (
+        window.scrollY + window.innerHeight - 50 >=
+        this.$refs.usersList.scrollHeight + 100
+      ) {
+        this.searchMax = this.searchMax + 6;
+      }
+    }
   },
   computed: {
-    filteredUsers: function() {
-      return this.users.filter(user => {
-        return user.login.match(this.search)
-      })
+    filteredUsers() {
+      return this.users
+        .filter(user => {
+          return user.login.match(this.search);
+        })
+        .splice(0, this.searchMax);
     }
   },
   created() {
-    window.addEventListener('scroll', this.moreUsers);
+    window.addEventListener("scroll", this.moreUsers);
   }
 };
 </script>
 
 <style lang="scss" scoped>
-
 .innerCont {
   display: flex;
   justify-content: center;
@@ -210,25 +212,25 @@ export default {
     }
   }
 }
-.darkTheme{
+.darkTheme {
   background: #34495e;
   color: #f5f5f5;
-  .searchInp{
+  .searchInp {
     background: #293847;
     color: #f5f5f5;
   }
-  li{
+  li {
     border: 1px solid #486079;
-    h3{
+    h3 {
       color: #fff;
     }
   }
-  h2{
+  h2 {
     color: #fff;
   }
 }
 @media screen and(max-width: 1200px) {
-  .listCont{
+  .listCont {
     max-width: 400px;
   }
 }
@@ -238,10 +240,10 @@ export default {
   }
 }
 @media screen and(max-width: 800px) {
-  .listCont{
+  .listCont {
     max-width: 200px;
   }
-  .userAdd{
+  .userAdd {
     font-size: 12px;
   }
 }

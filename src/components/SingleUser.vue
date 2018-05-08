@@ -251,14 +251,14 @@ export default {
     justify-content: space-around;
     flex-wrap: wrap;
     span {
-      width: 35%;
+      width: 30%;
       line-height: 30px;
       height: 30px;
     }
     a {
       margin: 0px;
       color: #34495e;
-      width: 65%;
+      width: 70%;
       line-height: 30px;
       height: 30px;
       &:hover {

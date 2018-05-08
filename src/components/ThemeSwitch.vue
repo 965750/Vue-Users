@@ -55,6 +55,7 @@ export default {
   transform: translate(-50%, -20%);
   text-align: center;
   transition: 0.5s all;
+  cursor: pointer;
 }
 .switch i {
   color: #fff;
