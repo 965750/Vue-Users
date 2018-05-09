@@ -1,8 +1,7 @@
 <template>
-  <div>
+  <main>
     <div class="innerCont">
       <div class="liveChatCont">
-
       </div>
       <div class="main" ref="usersList">
         <div class="optCont" v-bind:class="{darkTheme: dark}">
@@ -25,7 +24,7 @@
         <AsideChat v-bind:dark="dark" class="liveChat"/>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>

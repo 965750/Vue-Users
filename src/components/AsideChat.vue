@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <main>
     <div class="chatCont" :class="{wide: wideLink, darkTheme: dark}">
         <div v-if="logged || minName">
             <ul class="messages" v-chat-scroll v-on:scroll="scroll">
@@ -21,7 +21,7 @@
             <button class="enterBtn" @click="logIn">Enter</button>
         </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>

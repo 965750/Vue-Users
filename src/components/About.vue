@@ -1,5 +1,5 @@
 <template>
-<div>
+<main>
     <div class="infoCont" v-bind:class="{darkTheme: dark}">
         <h2>App Description</h2>
         <p>Simple aplication created in Vue.js. List of Github users with Live-Chat, where You can check more details about every single person by simple click. Live-chat connected to datebase.</p>
@@ -8,7 +8,7 @@
             <li v-for="tech in technologies" :key="tech">{{ tech }}</li>
         </ul>
     </div>
-</div>
+</main>
 </template>
 
 <script>
