@@ -1,9 +1,15 @@
 <template>
 <div>
-  <app-header class="head"></app-header>
-  <app-theme @click="dark = !dark"></app-theme>
-  <router-view v-bind:class="{dark: dark}" class="content" v-bind:dark="dark" v-bind:users="users"></router-view>
-  <app-footer class="foot"></app-footer>
+  <header>
+    <app-header class="head"></app-header>
+    <app-theme @click="dark = !dark"></app-theme>
+  </header>
+  <main>
+    <router-view v-bind:class="{dark: dark}" class="content" v-bind:dark="dark" v-bind:users="users"></router-view>
+  </main>
+  <footer>
+    <app-footer class="foot"></app-footer>
+  </footer>
 </div>
 </template>
 

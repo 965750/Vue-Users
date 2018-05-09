@@ -1,11 +1,9 @@
 <template>
-    
-        <div class="switchCont" v-bind:class="{darkTheme: !switchBtn}">
-            <div class="switch" @click="switchTheme">
-                <i class="material-icons">lightbulb_outline</i>
-            </div>
-        </div>
-    
+  <div class="switchCont" v-bind:class="{darkTheme: !switchBtn}">
+    <div class="switch" @click="switchTheme">
+      <i class="material-icons">lightbulb_outline</i>
+    </div>
+  </div>
 </template>
 
 <script>

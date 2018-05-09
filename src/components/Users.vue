@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <div>
     <div class="innerCont">
       <div class="liveChatCont">
       </div>
@@ -24,7 +24,7 @@
         <AsideChat v-bind:dark="dark" class="liveChat"/>
       </div>
     </div>
-  </main>
+  </div>
 </template>
 
 <script>

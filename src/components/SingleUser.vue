@@ -1,5 +1,5 @@
 <template>
-    <main id="singleUser">
+    <div id="singleUser">
         <article v-bind:class="{darkTheme: dark}" class="userCont">
             <div class="backCont" @click="goBack">
               <i class="material-icons arr">chevron_left</i>
@@ -36,7 +36,7 @@
                 <input class="submitInp" type="submit" value="add" v-on:click="addPost" />
             </div>
         </article>
-    </main>
+    </div>
 </template>
 
 <script>

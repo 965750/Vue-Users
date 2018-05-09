@@ -1,12 +1,12 @@
 <template>
-  <header class="headCont">
+  <div class="headCont">
       <h2>Vue App</h2>
       <ul>
           <router-link :to="{ name: 'Users'}" exact><li class="active">Home</li></router-link>
           <router-link :to="{ name: 'Livechat'}" exact><li>Livechat</li></router-link>
           <router-link :to="{ name: 'About'}" exact><li>About</li></router-link>
       </ul>
-  </header>
+  </div>
 </template>
 
 <script>
