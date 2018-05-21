@@ -37,9 +37,6 @@ export default {
   props: {
     users: {
       type: Array
-    },
-    dark: {
-      type: Boolean
     }
   },
   name: "users",
@@ -73,6 +70,9 @@ export default {
           return user.login.match(this.search);
         })
         .splice(0, this.searchMax);
+    },
+    dark(){
+      return this.$store.state.dark
     }
   },
   created() {

@@ -22,8 +22,33 @@ export default {
   },
   methods: {
     switchTheme() {
-      this.switchBtn = !this.switchBtn;
-      bus.$emit("themeChange", this.switchBtn);
+
+      this.$store.dispatch('themeSwitch')
+      // TO STORE
+// import Vue from 'vue';
+// import Vuex from 'vuex';
+// import axios from 'axios';
+
+// Vue.use(Vuex);
+
+// export const store = new Vuex.Store({
+//     state: {
+//         dark: false,
+//         technologies: ["API", "Sass", "JS", "HTML5", "RWD", "Git", "Vue.js", "FireBase"]
+//     },
+//     getters: {
+//     },
+//     mutations: {
+//         themeChange: state => {
+//             state.dark = !state.dark;
+//         }
+//     },
+//     actions: {
+//         themeSwitch: context => {
+//             context.commit('themeChange');
+//         }
+//     }
+// })
     }
   }
 };

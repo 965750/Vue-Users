@@ -13,16 +13,20 @@
 
 <script>
 export default {
-  props: {
-    dark: {
-      type: Boolean
-    }
-  },
+
   name: "About",
   data() {
     return {
-      technologies: ["API", "Sass", "JS", "HTML5", "RWD", "Git", "Vue.js", "FireBase"]
+      
     };
+  },
+  computed: {
+    dark(){
+      return this.$store.state.dark
+    },
+    technologies(){
+      return this.$store.state.technologies
+    }
   }
 };
 </script>

@@ -16,7 +16,7 @@ import db from "../firebase/init";
 
 export default {
   name: "NewMessage",
-  props: ["name", "dark"],
+  props: ["name"],
   data() {
     return {
       newMessage: null,
@@ -44,6 +44,11 @@ export default {
     },
     maximize() {
         this.$router.push({ name: 'Livechat', params: { minName: this.name }})
+    }
+  },
+  computed: {
+    dark(){
+      return this.$store.state.dark
     }
   }
 };

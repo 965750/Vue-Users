@@ -43,11 +43,6 @@
 import axios from "axios";
 
 export default {
-  props: {
-    dark: {
-      type: Boolean
-    }
-  },
   name: "singleuser",
   data() {
     return {
@@ -86,6 +81,11 @@ export default {
     },
     goBack() {
       this.$router.go(-1);
+    }
+  },
+  computed: {
+    dark(){
+      return this.$store.state.dark
     }
   },
   created() {
@@ -127,8 +127,8 @@ export default {
     line-height: 20px;
     border-radius: 7px;
     display: flex;
-    transition: all .1s;
-    &:hover{
+    transition: all 0.1s;
+    &:hover {
       background: #34495e;
       color: #39da91;
     }
@@ -137,7 +137,7 @@ export default {
       line-height: 20px;
       width: 20%;
     }
-    .back{
+    .back {
       line-height: 20px;
       display: block;
       width: 80%;
@@ -302,7 +302,7 @@ export default {
     }
   }
 }
-.lazyload{
+.lazyload {
   height: 30px;
   width: 30px;
   box-sizing: border-box;
@@ -310,45 +310,45 @@ export default {
   border-top: 4px solid #39da91;
   border-radius: 50%;
   animation: load infinite 1.4s ease;
-  transition: .2s all;
+  transition: 0.2s all;
   position: absolute;
   right: 3%;
   top: 1%;
   transform: translate(-50px, -50%);
 }
-.darkTheme{
+.darkTheme {
   background: #34495e;
-  .linkCont{
-    a{
+  .linkCont {
+    a {
       color: #f6f6f6;
     }
   }
-  .postCont{
-    ul{
-      li{
+  .postCont {
+    ul {
+      li {
         background: #465d74;
       }
     }
   }
-  .addCont{
-    .inpCont{
-      .addInp{
+  .addCont {
+    .inpCont {
+      .addInp {
         color: #f5f5f5;
         background: #293847;
       }
-      textarea{
+      textarea {
         color: #f5f5f5;
         background: #293847;
       }
     }
   }
 }
-@keyframes load{
-  0%{
-    transform: rotate(0deg)
+@keyframes load {
+  0% {
+    transform: rotate(0deg);
   }
-  100%{
-    transform: rotate(360deg)
+  100% {
+    transform: rotate(360deg);
   }
 }
 @media screen and(max-width: 500px) {

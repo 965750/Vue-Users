@@ -34,7 +34,7 @@ export default {
   components: {
     NewMessage
   },
-  props: ["minName","dark"],
+  props: ["minName"],
   data() {
     return {
       messages: [],
@@ -54,6 +54,11 @@ export default {
     },
     scroll(){
       console.log("testoo");
+    }
+  },
+  computed: {
+    dark(){
+      return this.$store.state.dark
     }
   },
   created() {

@@ -25,4 +25,8 @@ export default[
         component: AsideChat,
         props: true
     },
+    {
+        path: '*',
+        redirect: {name: 'Users'}
+    }
 ]
